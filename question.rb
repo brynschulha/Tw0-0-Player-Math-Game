@@ -16,5 +16,3 @@ class Question
     end
   end
 end
-
-# q = Question.new(rand(20), rand(20))

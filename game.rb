@@ -1,7 +1,5 @@
-require './player'
-
 class Game
-  attr_accessor :current_player #:player1.lives, :player2.lives, 
+  attr_accessor :current_player
 
   def initialize(player1, player2)
     @player1 = player1
@@ -17,40 +15,28 @@ class Game
     end
   end
 
+  def display_score
+    puts "#{@player1.name}: #{@player1.lives}/3 vs #{@player2.name}: #{@player2.lives}/3"
+  end
+
   def start()
-    while true #player1.lives != 0 && player2.lives != 0
+    while @player1.is_alive?(@player1) && @player2.is_alive?(@player2)
       puts "---NEW TURN---"
-      # initialize new turn
+      # Initialize a new Turn
       turn = Turn.new(Question.new(rand(20), rand(20)))
+      # Ask a Question, if value returned is false, decrement one life
       if !turn.ask_question(@current_player)
-      # turn.verify_answer(@current_player)
-        @current_player.lives = @current_player.lives - 1
+        @current_player.decrement_life(@current_player)
       end
-      puts @current_player.name
-      puts @current_player.lives
-      puts "P1: #{@player1.lives}/3 vs P2: #{@player2.lives}/3"
+      display_score
       change_current_player
-      # break if player1.lives == 0 || player2.lives == 0
-      if @player1.lives == 0
-        puts "Player 2 wins with a score of #{@player2.lives}/3"
-        puts "---GAME OVER---"
-        break
+      # Check if game continues
+      if !@player1.is_alive?(@player1)
+        @player2.end_message(@player2)
       end
-      if @player2.lives == 0
-        puts "Player 1 wins with a score of #{@player1.lives}/3"
-        puts "---GAME OVER---"
-        break
+      if !@player2.is_alive?(@player2)
+        @player2.end_message(@player1)
       end
     end
   end
 end
-
-# bob = Player.new("Bob")
-# joe = Player.new("Joe")
-# puts bob.lives
-# g1 = Game.new(bob, joe)
-# puts g1.current_player
-# puts bob.lives
-# g1.change_current_player
-# puts g1.current_player
-# g1.check_lives(@player1, @player2)

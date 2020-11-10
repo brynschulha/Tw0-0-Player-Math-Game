@@ -16,8 +16,3 @@ class Turn
     end
   end
 end
-
-# q = Question.new(rand(20), rand(20))
-# one = Turn.new(q)
-# # puts one
-# one.ask_question()
