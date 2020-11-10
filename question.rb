@@ -8,10 +8,10 @@ class Question
     puts "#{current_player.name}: What does #{@num1} + #{@num2} equal?"
     answer = gets.chomp.to_i
     if answer == (@num1 + @num2)
-      puts "YES! You are correct."
+      puts "#{current_player.name}: YES! You are correct."
       return true
     else 
-      puts "Seriously? No!"
+      puts "#{current_player.name}: Seriously? No!"
       return false
     end
   end

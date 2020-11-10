@@ -8,8 +8,8 @@ class Turn
     @question.ask_question(current_player)
   end
 
-  def verify_answer()
-    if @question
+  def verify_answer(current_player)
+    if @question.ask_question(current_player)
       return true
     else
       return false
