@@ -7,7 +7,7 @@ class Player
   end
 end
 
-bob = Player.new("Bob")
+# bob = Player.new("Bob")
 
-puts bob.name
-puts bob.lives
+# puts bob.name
+# puts bob.lives

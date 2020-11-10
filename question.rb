@@ -2,8 +2,11 @@ class Question
   def initialize(num1, num2)
     @num1 = num1
     @num2 = num2
-    puts "What does #{num1} + #{num2} equal?"
-    answer = gets.chomp
+  end
+  
+  def ask_question(current_player)
+    puts "#{current_player.name}: What does #{@num1} + #{@num2} equal?"
+    answer = gets.chomp.to_i
     if answer == (@num1 + @num2)
       puts "YES! You are correct."
       return true
@@ -14,4 +17,4 @@ class Question
   end
 end
 
-q = Question.new(rand(20), rand(20))
+# q = Question.new(rand(20), rand(20))

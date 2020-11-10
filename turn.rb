@@ -1,18 +1,15 @@
-require './question'
-require './game'
-require './player'
-
 class Turn
+  attr_accessor :question
   def initialize(question)
     @question = question
   end
 
-  def ask_question(question)
-    puts "#{current_player}: #{question}"
+  def ask_question(current_player)
+    @question.ask_question(current_player)
   end
 
-  def verify_answer(question)
-    if question
+  def verify_answer()
+    if @question
       return true
     else
       return false
@@ -20,7 +17,7 @@ class Turn
   end
 end
 
-q = Question.new(rand(20), rand(20))
-one = Turn.new(q)
-# puts one
-one.ask_question(q)
+# q = Question.new(rand(20), rand(20))
+# one = Turn.new(q)
+# # puts one
+# one.ask_question()
